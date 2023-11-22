@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="{{ asset('assets/extensions/sweetalert2/sweetalert2.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('assets/compiled/css/extra-component-sweetalert.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/extensions/choices.js/public/assets/styles/choices.css') }}">
+
 
     @stack('custome-css')
 </head>
@@ -53,7 +55,10 @@
 <script src="{{ asset('assets/compiled/js/app.js') }}"></script>
 
 <script src="{{ asset('assets/extensions/toastify-js/src/toastify.js') }}"></script>
-<script src="{{ asset('assets/extensions/sweetalert2/sweetalert2.min.js') }}"></script>>
+<script src="{{ asset('assets/extensions/sweetalert2/sweetalert2.min.js') }}"></script>
+
+<script src="{{ asset('assets/extensions/choices.js/public/assets/scripts/choices.js') }}"></script>
+<script src="{{ asset('assets/static/js/pages/form-element-select.js') }}"></script>
 
 @stack('custome-script')
 

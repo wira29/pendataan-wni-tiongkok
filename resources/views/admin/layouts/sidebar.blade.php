@@ -43,7 +43,7 @@
 
 
                 <li
-                    class="sidebar-item  active">
+                    class="sidebar-item {{ request()->routeIs('home') ? 'active' : '' }}">
                     <a href="index.html" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Beranda</span>
@@ -57,7 +57,7 @@
                 <li class="sidebar-title">Master Data</li>
 
                 <li
-                    class="sidebar-item has-sub">
+                    class="sidebar-item has-sub {{ request()->routeIs('admin.cabang.*') ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-stack"></i>
                         <span>Cabang</span>
@@ -65,11 +65,11 @@
 
                     <ul class="submenu active">
 
-                        <li class="submenu-item  ">
+                        <li class="submenu-item {{ request()->routeIs('admin.cabang.create') ? 'active' : '' }}">
                             <a href="{{ route('admin.cabang.create') }}" class="submenu-link">Tambah Cabang</a>
 
                         </li>
-                        <li class="submenu-item  ">
+                        <li class="submenu-item {{ request()->routeIs('admin.cabang.index') ? 'active' : '' }}">
                             <a href="{{ route('admin.cabang.index') }}" class="submenu-link">List Cabang</a>
 
                         </li>
@@ -80,7 +80,7 @@
                 </li>
 
                 <li
-                    class="sidebar-item has-sub">
+                    class="sidebar-item has-sub {{ request()->routeIs('admin.ranting.*') ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-stack"></i>
                         <span>Ranting</span>
@@ -88,12 +88,12 @@
 
                     <ul class="submenu active">
 
-                        <li class="submenu-item  ">
-                            <a href="component-accordion.html" class="submenu-link">Tambah Ranting</a>
+                        <li class="submenu-item {{ request()->routeIs('admin.ranting.create') ? 'active' : '' }}">
+                            <a href="{{ route('admin.ranting.create') }}" class="submenu-link">Tambah Ranting</a>
 
                         </li>
-                        <li class="submenu-item  ">
-                            <a href="component-accordion.html" class="submenu-link">List Ranting</a>
+                        <li class="submenu-item {{ request()->routeIs('admin.ranting.index') ? 'active' : '' }}">
+                            <a href="{{ route('admin.ranting.index') }}" class="submenu-link">List Ranting</a>
 
                         </li>
 

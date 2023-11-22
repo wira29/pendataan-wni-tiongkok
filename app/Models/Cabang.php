@@ -14,4 +14,9 @@ class Cabang extends Model
         'nama',
         'alamat',
     ];
+
+    public function rantings()
+    {
+        return $this->hasMany(Ranting::class, 'cabang_id', 'id');
+    }
 }
