@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CabangController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.pages.blank.index');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function() {
+    Route::resources([
+        'cabang' => CabangController::class,
+    ]);
+});
+
+
