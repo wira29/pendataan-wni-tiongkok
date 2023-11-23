@@ -19,6 +19,7 @@
 
     <link rel="stylesheet" href="{{ asset('assets/compiled/css/extra-component-sweetalert.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/extensions/choices.js/public/assets/styles/choices.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/extensions/flatpickr/flatpickr.min.css') }}">
 
 
     @stack('custome-css')
@@ -60,6 +61,9 @@
 <script src="{{ asset('assets/extensions/choices.js/public/assets/scripts/choices.js') }}"></script>
 <script src="{{ asset('assets/static/js/pages/form-element-select.js') }}"></script>
 
+<script src="{{ asset('assets/extensions/flatpickr/flatpickr.min.js') }}"></script>
+<script src="{{ asset('assets/static/js/pages/date-picker.js') }}"></script>
+
 @stack('custome-script')
 
 <script>
@@ -96,7 +100,16 @@
             backgroundColor: "#4fbe87",
         }).showToast()
         @endif
-
+        @if(session('error'))
+        Toastify({
+            text: "{{ session('error') }}",
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "right",
+            backgroundColor: "#DA5955",
+        }).showToast()
+        @endif
 
         // Delete modal
         const Swal2 = Swal.mixin({

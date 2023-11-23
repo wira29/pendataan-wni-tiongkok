@@ -126,7 +126,7 @@
                 </li>
 
                 <li
-                    class="sidebar-item has-sub">
+                    class="sidebar-item has-sub {{ request()->routeIs('admin.pendataan.*') ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-stack"></i>
                         <span>Pendataan Tahunan</span>
@@ -134,13 +134,13 @@
 
                     <ul class="submenu active">
 
-                        <li class="submenu-item  ">
-                            <a href="component-accordion.html" class="submenu-link">Tambah Pendataan Tahunan</a>
+                        <li class="submenu-item {{ request()->routeIs('admin.pendataan.create') ? 'active' : '' }}">
+                            <a href="{{ route('admin.pendataan.create') }}" class="submenu-link">Tambah Pendataan Tahunan</a>
 
                         </li>
 
-                        <li class="submenu-item  ">
-                            <a href="component-accordion.html" class="submenu-link">List Pendataan Tahunan</a>
+                        <li class="submenu-item {{ request()->routeIs('admin.pendataan.index') ? 'active' : '' }}">
+                            <a href="{{ route('admin.pendataan.index') }}" class="submenu-link">List Pendataan Tahunan</a>
 
                         </li>
                     </ul>

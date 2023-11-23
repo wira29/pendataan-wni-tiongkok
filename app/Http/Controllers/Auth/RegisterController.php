@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Ranting;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -42,6 +43,19 @@ class RegisterController extends Controller
     }
 
     /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function showRegistrationForm()
+    {
+        $data = [
+            'rantings' => Ranting::all(),
+        ];
+        return view('auth.register', $data);
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -50,9 +64,15 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'nama' => ['required', 'string', 'max:255'],
+            'ranting_id' => ['required', 'integer', 'exists:rantings,id'],
+            'gender' => ['required', 'string', 'max:255', 'in:laki-laki,perempuan'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password_confirmation' => 'required_with:password|same:password|min:8',
+            'no_hp' => ['required', 'string', 'max:13'],
+            'alamat_indonesia' => ['required', 'string', 'max:255'],
+            'alamat_tiongkok' => ['required', 'string', 'max:255'],
         ]);
     }
 
@@ -64,10 +84,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        $user = User::create([
+            'nik' => $data['nik'],
+            'nama' => $data['nama'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'ranting_id' => $data['ranting_id'],
+            'gender' => $data['gender'],
+            'no_hp' => $data['no_hp'],
+            'alamat_indonesia' => $data['alamat_indonesia'],
+            'alamat_tiongkok' => $data['alamat_tiongkok'],
         ]);
+
+        $user->assignRole('user');
+
+        return $user;
     }
 }
