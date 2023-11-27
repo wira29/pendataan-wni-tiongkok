@@ -41,10 +41,9 @@
         <div class="sidebar-menu">
             <ul class="menu">
 
-
                 <li
                     class="sidebar-item {{ request()->routeIs('home') ? 'active' : '' }}">
-                    <a href="index.html" class='sidebar-link'>
+                    <a href="{{ route('home') }}" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Beranda</span>
                     </a>
@@ -53,9 +52,8 @@
                 </li>
 
 
-
+                @if(auth()->user()->hasRole('admin'))
                 <li class="sidebar-title">Master Data</li>
-
                 <li
                     class="sidebar-item has-sub {{ request()->routeIs('admin.cabang.*') ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
@@ -99,6 +97,7 @@
 
                     </ul>
                 </li>
+                @endif
 
 
                 <li class="sidebar-title">Menu</li>
