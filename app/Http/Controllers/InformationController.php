@@ -15,6 +15,7 @@ class InformationController extends Controller
      */
     public function index()
     {
+
         $user = auth()->user();
         $data = [
             'informations' => Information::query()->orderBy('created_at', 'desc')->paginate(8),
@@ -28,8 +29,10 @@ class InformationController extends Controller
      */
     public function create()
     {
+
         $user = auth()->user();
         return view('admin.pages.informasi.create',compact('user'));
+
     }
 
     /**
@@ -58,8 +61,10 @@ class InformationController extends Controller
      */
     public function edit(Information $informasi)
     {
+
         $user = auth()->user();
         return view('admin.pages.informasi.edit', compact('informasi', 'user'));
+
     }
 
     /**

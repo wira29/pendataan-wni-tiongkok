@@ -39,7 +39,4 @@
             {{ $informations->links() }}
         </div>
     </div>
-
 @endsection
-
-

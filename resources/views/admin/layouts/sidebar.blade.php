@@ -103,21 +103,22 @@
                 <li class="sidebar-title">Menu</li>
 
                 <li
-                    class="sidebar-item has-sub">
+
+                    class="sidebar-item has-sub {{ request()->routeIs('admin.informasi.*') ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-stack"></i>
                         <span>Informasi</span>
                     </a>
 
                     <ul class="submenu active">
-                        <li class="submenu-item  ">
-                            <a href="{{route('admin.informasi.create')}}" class="submenu-link">Tambah Informasi</a>
+
+                        <li class="submenu-item {{ request()->routeIs('admin.informasi.create') ? 'active' : '' }}">
+                            <a href="{{ route('admin.informasi.create') }}" class="submenu-link">Tambah Informasi</a>
 
                         </li>
 
-                        <li class="submenu-item  ">
-                            <a href="{{route('admin.informasi.index')}}" class="submenu-link">List Informasi</a>
-
+                        <li class="submenu-item {{ request()->routeIs('admin.informasi.index') ? 'active' : '' }}">
+                            <a href="{{ route('admin.informasi.index') }}" class="submenu-link">List Informasi</a>
                         </li>
                     </ul>
 

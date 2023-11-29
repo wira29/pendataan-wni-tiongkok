@@ -5,7 +5,7 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Halaman Informasi</h3>
+                    <h3>Halaman Edit informasi</h3>
                     <p class="text-subtitle text-muted">Isi form dibawah ini untuk mengedit informasi</p>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label for="first-name-vertical">Judul</label>
-                                                    <input type="text" id="first-name-vertical" class="form-control" name="judul" value="{{ $informasi->judul }}" placeholder="Judul informasi..">
+                                                    <input type="text" value="{{ $informasi->judul }}" id="first-name-vertical" class="form-control" name="judul" placeholder="nama informasi..">
                                                 </div>
                                             </div>
                                             <div class="col-12">
@@ -66,6 +66,7 @@
         </div>
     </div>
 @endsection
+
 @push('custome-script')
     <script>
         flatpickr('.flatpickr-no-config', {
