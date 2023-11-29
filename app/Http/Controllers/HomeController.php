@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.blank.index');
+        $user = auth()->user();
+        return view('admin.pages.blank.index',compact('user'));
     }
 }

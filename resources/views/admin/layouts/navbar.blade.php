@@ -70,7 +70,7 @@
                             </div>
                             <div class="user-img d-flex align-items-center">
                                 <div class="avatar avatar-md">
-                                    <img src="{{ asset('assets/compiled/jpg/1.jpg') }}">
+                                    <img src="{{ asset('storage/' . $user->foto) }}">
                                 </div>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                         <li>
                             <h6 class="dropdown-header">Hello, {{ auth()->user()->nama }}</h6>
                         </li>
-                        <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-person me-2"></i> My
+                        <li><a class="dropdown-item" href="{{route('admin.profile.index')}}"><i class="icon-mid bi bi-person me-2"></i> My
                                 Profile</a></li>
                         <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-gear me-2"></i>
                                 Settings</a></li>

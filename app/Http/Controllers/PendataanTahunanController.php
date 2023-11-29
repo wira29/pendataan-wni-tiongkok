@@ -14,8 +14,10 @@ class PendataanTahunanController extends Controller
      */
     public function index()
     {
+        $user = auth()->user();
         $data = [
             'pendataans' => Pendataan::orderBy('created_at', 'desc')->paginate(),
+            'user' => $user,
         ];
         return view('admin.pages.pendataan-tahunan.index', $data);
     }
@@ -25,7 +27,8 @@ class PendataanTahunanController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.pendataan-tahunan.create');
+        $user = auth()->user(); 
+        return view('admin.pages.pendataan-tahunan.create',compact('user'));
     }
 
     /**

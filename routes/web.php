@@ -3,6 +3,8 @@
 use App\Http\Controllers\CabangController;
 use App\Http\Controllers\PendataanTahunanController;
 use App\Http\Controllers\RantingController;
+use App\Http\Controllers\MyProfileController;
+use App\Http\Controllers\InformationController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -29,7 +31,9 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function() {
         'cabang' => CabangController::class,
         'ranting' => RantingController::class,
         'pendataan' => PendataanTahunanController::class,
-    ]);
+        'profile' => MyProfileController::class,
+        'informasi' => InformationController::class,
+        ]);
 });
 
 
