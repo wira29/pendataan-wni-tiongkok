@@ -104,19 +104,19 @@
 
                 <li
                     class="sidebar-item has-sub">
-                    <a href="#" class='sidebar-link'>
+                    <a href="" class='sidebar-link'>
                         <i class="bi bi-stack"></i>
                         <span>Informasi</span>
                     </a>
 
                     <ul class="submenu active">
                         <li class="submenu-item  ">
-                            <a href="component-accordion.html" class="submenu-link">Tambah Informasi</a>
+                            <a href="{{route('admin.informasi.create')}}" class="submenu-link">Tambah Informasi</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="component-accordion.html" class="submenu-link">List Informasi</a>
+                            <a href="{{route('admin.informasi.index')}}" class="submenu-link">List Informasi</a>
 
                         </li>
                     </ul>
