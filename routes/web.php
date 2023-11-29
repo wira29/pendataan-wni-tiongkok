@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CabangController;
+use App\Http\Controllers\InformationController;
 use App\Http\Controllers\PendataanTahunanController;
 use App\Http\Controllers\RantingController;
 use Illuminate\Support\Facades\Auth;
@@ -29,6 +30,7 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function() {
         'cabang' => CabangController::class,
         'ranting' => RantingController::class,
         'pendataan' => PendataanTahunanController::class,
+        'informasi' => InformationController::class,
     ]);
 });
 
