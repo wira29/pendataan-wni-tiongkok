@@ -4,7 +4,7 @@ namespace App\Http\Requests\informasi;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +22,9 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-
             'judul' => 'required|string|max:100',
             'deskripsi' => 'required|string',
-            'gambar' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            'gambar' => 'image|mimes:jpg,jpeg,png|max:2048',
         ];
     }
 
@@ -42,10 +41,9 @@ class StoreRequest extends FormRequest
             'judul.max' => 'Judul maksimal 100 karakter',
             'deskripsi.required' => 'Deskripsi harus diisi',
             'deskripsi.string' => 'Deskripsi harus berupa string',
-            'gambar.required' => 'Gambar harus diisi',
             'gambar.image' => 'Gambar harus berupa gambar',
             'gambar.mimes' => 'Gambar harus berupa gambar dengan format jpg, jpeg, atau png',
             'gambar.max' => 'Gambar maksimal 2MB',
-            ];
+        ];
     }
 }

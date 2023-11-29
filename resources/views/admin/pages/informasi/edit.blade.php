@@ -27,7 +27,8 @@
                     <div class="card">
                         <div class="card-content">
                             <div class="card-body">
-                                <form action="{{ route('admin.informasi.update', $informasi->id) }}" method="POST" class="form form-vertical">
+
+                                <form action="{{ route('admin.informasi.update', $informasi->id) }}" method="POST" enctype="multipart/form-data" class="form form-vertical">
                                     @method('PATCH')
                                     @csrf
                                     <div class="form-body">
@@ -36,12 +37,19 @@
                                                 <div class="form-group">
                                                     <label for="first-name-vertical">Judul</label>
                                                     <input type="text" value="{{ $informasi->judul }}" id="first-name-vertical" class="form-control" name="judul" placeholder="nama informasi..">
+
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label for="email-id-vertical">Deskripsi</label>
-                                                    <textarea class="form-control" name="deskripsi" id="deskripsi" cols="5" rows="5" placeholder="Deskripsi...">{{ $informasi->deskripsi }}</textarea>
+                                                    <textarea class="form-control" name="deskripsi" id="alamat" cols="5" rows="5" placeholder="deskripsi...">{{ $informasi->deskripsi }}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label for="first-name-vertical">Gambar</label>
+                                                    <input type="file" id="first-name-vertical" class="form-control" name="gambar">
                                                 </div>
                                             </div>
 
@@ -60,3 +68,13 @@
         </div>
     </div>
 @endsection
+
+@push('custome-script')
+    <script>
+        flatpickr('.flatpickr-no-config', {
+            enableTime: true,
+            dateFormat: "Y-m-d",
+        })
+    </script>
+@endpush
+

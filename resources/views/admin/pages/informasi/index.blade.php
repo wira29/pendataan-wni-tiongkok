@@ -5,28 +5,29 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Halaman Cabang</h3>
-                    <p class="text-subtitle text-muted">Daftar cabang yang terdaftar</p>
+                    <h3>Halaman Informasi</h3>
+                    <p class="text-subtitle text-muted">List informasi</p>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="row">
-        @foreach($informasis as $informasi)
+        @foreach($informations as $information)
             <div class="col-3">
                 <div class="card">
                     <div class="card-content">
+                        <img src="{{ asset('storage/' . $information->gambar) }}" class="card-img-top img-fluid"
+                             alt="singleminded">
                         <div class="card-body">
-                            <h3>{{ $informasi->judul }}</h3>
+                            <h3>{{ $information->judul }}</h3>
                             <p class="card-text">
-                                {{ $informasi->deskripsi }}
+                                {{ substr($information->deskripsi, 0, 50) }}...
                             </p>
-                            @if($informasi->gambar)
-                                <img src="{{ asset('storage/images/informasi/' . $informasi->gambar) }}" alt="{{ $informasi->judul }}" class="img-fluid">
-                            @endif
-                            <a href="{{ route('admin.informasi.edit', $informasi->id) }}" class="card-link">Edit</a>
-                            <a href="#" class="card-link btn-delete-data" data-route="{{ route('admin.informasi.destroy', $informasi->id) }}">Hapus</a>
+                            <a href="{{ route('admin.informasi.show', $information->id) }}" class="card-link">Tampilkan</a>
+                            <a href="{{ route('admin.informasi.edit', $information->id) }}" class="card-link">Edit</a>
+                            <a href="#" class="card-link btn-delete-data"
+                               data-route="{{ route('admin.informasi.destroy', $information->id) }}">Hapus</a>
                         </div>
                     </div>
                 </div>
@@ -35,15 +36,8 @@
     </div>
     <div class="row">
         <div class="col-12">
-            @if($informasis instanceof \Illuminate\Pagination\LengthAwarePaginator)
-                {{ $informasis->links() }}
-            @endif
+            {{ $informations->links() }}
         </div>
     </div>
+
 @endsection
-
-@push('custome-script')
-    <script>
-
-    </script>
-@endpush
