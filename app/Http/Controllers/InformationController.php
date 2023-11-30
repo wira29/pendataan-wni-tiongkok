@@ -53,7 +53,8 @@ class InformationController extends Controller
      */
     public function show(Information $informasi)
     {
-        return view('admin.pages.informasi.detail', compact('informasi'));
+        $user = auth()->user();
+        return view('admin.pages.informasi.detail', compact('informasi','user'));
     }
 
     /**

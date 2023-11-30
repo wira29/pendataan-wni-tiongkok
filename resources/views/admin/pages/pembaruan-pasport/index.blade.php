@@ -13,7 +13,7 @@
     </div>
 
     <div class="row">
-        @foreach($informations as $information)
+        @foreach($passpors as $information)
             <div class="col-3">
                 <div class="card">
                     <div class="card-content">
@@ -38,7 +38,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            {{ $informations->links() }}
+            {{ $passpors->links() }}
         </div>
     </div>
 @endsection

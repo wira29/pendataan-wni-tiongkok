@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class PembaruanPaspor extends Model
 {
     use HasFactory;
+
+    
 }

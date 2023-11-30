@@ -5,6 +5,7 @@ use App\Http\Controllers\InformationController;
 use App\Http\Controllers\PendataanTahunanController;
 use App\Http\Controllers\RantingController;
 use App\Http\Controllers\MyProfileController;
+use App\Http\Controllers\PasportController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,7 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function() {
         'pendataan' => PendataanTahunanController::class,
         'profile' => MyProfileController::class,
         'informasi' => InformationController::class,
+        'pembaruan-paspor' => PasportController::class,
         ]);
 });
 

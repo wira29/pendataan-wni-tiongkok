@@ -103,7 +103,6 @@
                 <li class="sidebar-title">Menu</li>
 
                 <li
-
                     class="sidebar-item has-sub {{ request()->routeIs('admin.informasi.*') ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-stack"></i>
@@ -112,17 +111,17 @@
 
                     <ul class="submenu active">
 
+                    @if(Auth::check() && Auth::user()->is_admin)
                         <li class="submenu-item {{ request()->routeIs('admin.informasi.create') ? 'active' : '' }}">
                             <a href="{{ route('admin.informasi.create') }}" class="submenu-link">Tambah Informasi</a>
 
                         </li>
+                    @endif
 
                         <li class="submenu-item {{ request()->routeIs('admin.informasi.index') ? 'active' : '' }}">
                             <a href="{{ route('admin.informasi.index') }}" class="submenu-link">List Informasi</a>
                         </li>
                     </ul>
-
-
                 </li>
 
                 <li
@@ -158,12 +157,12 @@
                     <ul class="submenu active">
 
                         <li class="submenu-item  ">
-                            <a href="component-accordion.html" class="submenu-link">Tambah Pembaruan Paspor</a>
+                            <a href="{{route('admin.pembaruan-paspor.create')}}" class="submenu-link">Tambah Pembaruan Paspor</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="component-accordion.html" class="submenu-link">List Pembaruan Paspor</a>
+                            <a href="{{route('admin.pembaruan-paspor.index')}}" class="submenu-link">List Pembaruan Paspor</a>
 
                         </li>
                     </ul>

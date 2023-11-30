@@ -13,6 +13,7 @@ class CabangController extends Controller
      */
     public function index()
     {
+        $suer =
         $data = [
             'cabangs' => Cabang::query()->paginate(8),
         ];

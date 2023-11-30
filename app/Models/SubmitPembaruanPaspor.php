@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class SubmitPembaruanPaspor extends Model
 {
     use HasFactory;
+
+    protected $table = 'submit_pembaruan_paspors';
+
+    protected $fillable = [
+        'id',
+        'pembaruan_passpor_id',
+        'user_id',
+        'file',
+        'created_at',
+        'updated_at',
+    ];
 }
