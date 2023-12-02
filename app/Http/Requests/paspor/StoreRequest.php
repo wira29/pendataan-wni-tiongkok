@@ -1,0 +1,52 @@
+<?php
+
+namespace App\Http\Requests\paspor;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class StoreRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
+    public function rules(): array
+    {
+        return [
+            'judul' => 'required|string|max:100',
+            'deskripsi' => 'required|string',
+            'foto' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            'batas_tanggal' => 'required|date',
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array<string, string>
+     */
+    public function messages()
+    {
+        return [
+            'judul.required' => 'Judul harus diisi',
+            'judul.string' => 'Judul harus berupa string',
+            'judul.max' => 'Judul maksimal 100 karakter',
+            'deskripsi.required' => 'Deskripsi harus diisi',
+            'deskripsi.string' => 'Deskripsi harus berupa string',
+            'foto.required' => 'foto harus diisi',
+            'foto.image' => 'foto harus berupa foto',
+            'foto.mimes' => 'foto harus berupa foto dengan format jpg, jpeg, atau png',
+            'foto.max' => 'foto maksimal 2MB',
+            'batas_tanggal.required' => 'Batas tanggal harus diisi',
+            ];
+    }
+}

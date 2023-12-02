@@ -14,8 +14,10 @@ class RantingController extends Controller
      */
     public function index()
     {
+        $user = auth()->user();
         $data = [
             'rantings' => Ranting::query()->with('cabang')->paginate(8),
+            'user' => $user,
         ];
 
         return view('admin.pages.ranting.index', $data);
@@ -26,8 +28,10 @@ class RantingController extends Controller
      */
     public function create()
     {
+        $user = auth()->user();
         $data = [
             'cabangs' => Cabang::all(),
+            'user' => $user,
         ];
         return view('admin.pages.ranting.create', $data);
     }

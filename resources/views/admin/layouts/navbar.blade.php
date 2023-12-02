@@ -89,18 +89,36 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><i
-                                    class="icon-mid bi bi-box-arrow-left me-2"></i> Logout</a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
+                            <a class="dropdown-item" href="#" onclick="confirmLogout()">
+                                <i class="icon-mid bi bi-box-arrow-left me-2"></i> Logout
+                            </a>
                         </li>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
 </header>
+
+<script>
+    function confirmLogout() {
+        Swal.fire({
+            title: 'Logout Confirmation',
+            text: 'Are you sure you want to logout?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, logout!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If confirmed, submit the logout form
+                document.getElementById('logout-form').submit();
+            }
+        });
+    }
+</script>

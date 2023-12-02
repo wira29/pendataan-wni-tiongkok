@@ -19,13 +19,23 @@
                     <div class="card-content">
                         <img src="{{ asset('storage/' . $pendataan->foto) }}" class="card-img-top img-fluid" alt="singleminded">
                         <div class="card-body">
-                            <h3>{{ $pendataan->nama }}</h3>
+                            <h3>{{ $pendataan->judul }}</h3>
                             <p class="card-text">
                                 {{ $pendataan->deskripsi }}
                             </p>
-                            <a href="{{ route('admin.cabang.edit', $pendataan->id) }}" class="card-link">Edit</a>
+                            <p class="card-text">
+                               Batas Tanggal ( {{ $pendataan->batas_tanggal }} )
+                            </p>
+                            <!-- edit dan hapus tampilkan pada admin saja -->
+                     @auth
+                        @if(auth()->user()->roles->pluck('name')->contains('admin'))
+                            <a href="{{ route('admin.pendataan.edit', $pendataan->id) }}" class="card-link">Edit</a>
                             <a href="#" class="card-link btn-delete-data"
                                data-route="{{ route('admin.pendataan.destroy', $pendataan->id) }}">Hapus</a>
+                            @elseif(auth()->user()->roles->pluck('name')->contains('user'))
+                            <a href="{{ route('admin.pendataan.show', $pendataan->id) }}" class="card-link">Isi Pendataan</a>
+                            @endif
+                        @endauth
                         </div>
                     </div>
                 </div>

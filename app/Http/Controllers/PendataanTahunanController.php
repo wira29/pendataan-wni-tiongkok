@@ -52,7 +52,9 @@ class PendataanTahunanController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user = auth()->user();
+        $pendataan = Pendataan::query()->findOrFail($id);
+        return view('admin.pages.pendataan-tahunan.pendataan', compact('pendataan','user'));
     }
 
     /**
@@ -60,7 +62,9 @@ class PendataanTahunanController extends Controller
      */
     public function edit(string $id)
     { 
-        //
+        $pendataan = Pendataan::query()->findOrFail($id);
+        $user = auth()->user();
+        return view('admin.pages.pendataan-tahunan.edit', compact('id', 'user', 'pendataan'));
     }
 
     /**
@@ -68,7 +72,17 @@ class PendataanTahunanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $pendataan = Pendataan::query()->findOrFail($id);
+        $data = $request->all();
+
+        if($request->hasFile('foto')) {
+            $data['foto'] = $request->file('foto')->store('pendataan');
+            if(Storage::exists($pendataan->foto)) Storage::delete($pendataan->foto);
+        }
+
+        $pendataan->update($data);
+
+        return redirect()->route('admin.pendataan.index')->with('success', 'Data berhasil diubah');
     }
 
     /**

@@ -5,8 +5,8 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Halaman Edit informasi</h3>
-                    <p class="text-subtitle text-muted">Isi form dibawah ini untuk mengedit informasi</p>
+                    <h3>Halaman Edit pembaruanPaspor</h3>
+                    <p class="text-subtitle text-muted">Isi form dibawah ini untuk mengedit pembaruanPaspor</p>
                 </div>
             </div>
             <div class="row">
@@ -27,7 +27,7 @@
                     <div class="card">
                         <div class="card-content">
                             <div class="card-body">
-                                <form action="{{ route('admin.informasi.update', $informasi->id) }}" method="POST" enctype="multipart/form-data" class="form form-vertical">
+                                <form action="{{ route('admin.pembaruan-paspor.update', $pembaruanPaspor->id) }}" method="POST" enctype="multipart/form-data" class="form form-vertical">
                                     @method('PATCH')
                                     @csrf
                                     <div class="form-body">
@@ -35,13 +35,13 @@
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label for="first-name-vertical">Judul</label>
-                                                    <input type="text" value="{{ $informasi->judul }}" id="first-name-vertical" class="form-control" name="judul" placeholder="nama informasi..">
+                                                    <input type="text" value="{{ $pembaruanPaspor->judul }}" id="first-name-vertical" class="form-control" name="judul" placeholder="nama pembaruanPaspor..">
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label for="email-id-vertical">Deskripsi</label>
-                                                    <textarea class="form-control" name="deskripsi" id="alamat" cols="5" rows="5" placeholder="deskripsi...">{{ $informasi->deskripsi }}</textarea>
+                                                    <textarea class="form-control" name="deskripsi" id="alamat" cols="5" rows="5" placeholder="deskripsi...">{{ $pembaruanPaspor->deskripsi }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="col-12">

@@ -27,101 +27,32 @@
                     <div class="card">
                         <div class="card-content">
                             <div class="card-body">
-                                <form action="{{ route('admin.informasi.store') }}" method="POST" enctype="multipart/form-data" class="form form-vertical">
+                                <form action="{{ route('admin.pembaruan-paspor.store') }}" method="POST" enctype="multipart/form-data" class="form form-vertical">
                                     @csrf
                                     <div class="form-body">
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label for="first-name-vertical">Nama Lengkap</label>
-                                                    <input type="text" id="first-name-vertical" class="form-control" name="judul" value="{{ $user->nama }}" placeholder ="Nama">
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                            <div class="form-group">
-                                                <label for="gender-id-icon">Gender</label>
-                                                <select class="form-select" id="gender-id-icon" name="gender">
-                                                    <option value="laki-laki" {{ $user->gender == 'laki-laki' ? 'selected' : '' }}>Laki-Laki</option>
-                                                    <option value="perempuan" {{ $user->gender == 'perempuan' ? 'selected' : '' }}>Perempuan</option>
-                                                </select>
+                                                    <label for="first-name-vertical">Judul</label>
+                                                    <input type="text" id="first-name-vertical" class="form-control" name="judul" placeholder ="Nama">
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="form-group">
-                                                    <label for="first-name-vertical">Tanggal Lahir</label>
-                                                    <input name="tanggal_lahir" value="{{ old('tanggal_lahir') }}" type="date" class="form-control mb-3 flatpickr-no-config" placeholder="Select date..">
+                                                    <label for="first-name-vertical">Gambar</label>
+                                                    <input type="file" id="first-name-vertical" class="form-control" name="foto" placeholder="Judul pendataan tahunan..">
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="form-group">
-                                                    <label for="first-name-vertical">Tempat Lahir</label>
-                                                    <input type="text" id="first-name-vertical" class="form-control" name="tempat_lahir" placeholder="Tempat Lahir">
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <label for="first-name-vertical">Keperluan</label>
-                                                    <input type="text" id="first-name-vertical" class="form-control" name="keperluan" placeholder="Status/Keperluan di Tiongkok">
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <label for="first-name-vertical">Email Aktif</label>
-                                                    <input type="text" id="first-name-vertical" class="form-control" name="email" value="{{$user->email}}" placeholder="Status/Keperluan di Tiongkok">
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <label for="first-name-vertical">No.Hp Tiongkok</label>
-                                                    <input type="number" id="first-name-vertical" class="form-control" name="no_hp_tiongkok" placeholder="No.Hp Tiongkok">
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <label for="first-name-vertical">Nomor Passport</label>
-                                                    <input type="number" id="first-name-vertical" class="form-control" name="no_paspor" placeholder="No.Hp Tiongkok">
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <label for="first-name-vertical">Masa Berlaku Pasport</label>
-                                                    <input name="masa_berlaku_paspor" value="{{ old('masa_berlaku_paspor') }}" type="date" class="form-control mb-3 flatpickr-no-config" placeholder="Select date..">
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <label for="first-name-vertical">Nomor Visa</label>
-                                                    <input type="number" id="first-name-vertical" class="form-control" name="no_visa" placeholder="Nomor Visa">
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <label for="first-name-vertical">Masa Berlaku Visa</label>
-                                                    <input name="masa_berlaku_visa" value="{{ old('masa_berlaku_visa') }}" type="date" class="form-control mb-3 flatpickr-no-config" placeholder="Select date..">
+                                                    <label for="first-name-vertical">Batas Tanggal</label>
+                                                    <input name="batas_tanggal" type="date" class="form-control mb-3 flatpickr-no-config" placeholder="Select date..">
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label for="first-name-vertical">Nama Kontak Darurat</label>
-                                                    <input type="text" id="first-name-vertical" class="form-control" name="nama_kontak_darurat" placeholder="Nama Kontak Darurat">
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <label for="first-name-vertical">Nomor Kontak Darurat</label>
-                                                    <input type="number" id="first-name-vertical" class="form-control" name="no_kontak_darurat" placeholder="Nomor Kontak Darurat">
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <label for="first-name-vertical">Hubungan Dengan Kontak Darurat</label>
-                                                    <input type="text" id="first-name-vertical" class="form-control" name="hubungan_kontak_darurat" placeholder="Hubungan Dengan Kontak Darurat">
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <label for="email-id-vertical">Alamat Lengkap di Indonesia</label>
-                                                    <textarea class="form-control" name="deskripsi" id="alamat" cols="5" rows="5" placeholder="deskripsi...">{{ old('deskripsi') }}</textarea>
+                                                    <label for="email-id-vertical">Deskripsi</label>
+                                                    <textarea class="form-control" name="deskripsi" id="alamat" cols="5" rows="5" placeholder="deskripsi..."></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-12 d-flex justify-content-end">

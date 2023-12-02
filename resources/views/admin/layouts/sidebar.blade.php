@@ -185,15 +185,35 @@
 
                 <li
                     class="sidebar-item  ">
-                    <a href="https://github.com/zuramai/mazer/blob/main/CONTRIBUTING.md" class='sidebar-link'>
+                    <a href="#" class='sidebar-link' onclick="confirmLogout()">
                         <i class="bi bi-puzzle"></i>
                         <span>Keluar</span>
                     </a>
-
-
                 </li>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
 
             </ul>
         </div>
     </div>
 </div>
+
+<script>
+    function confirmLogout() {
+        Swal.fire({
+            title: 'Logout Confirmation',
+            text: 'Are you sure you want to logout?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, logout!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If confirmed, submit the logout form
+                document.getElementById('logout-form').submit();
+            }
+        });
+    }
+</script>

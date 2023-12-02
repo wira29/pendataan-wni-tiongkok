@@ -13,9 +13,10 @@ class CabangController extends Controller
      */
     public function index()
     {
-        $suer =
+        $user = auth()->user();
         $data = [
             'cabangs' => Cabang::query()->paginate(8),
+            'user' => $user,
         ];
         return view('admin.pages.cabang.index', $data);
     }
@@ -25,7 +26,8 @@ class CabangController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.cabang.create');
+        $user = auth()->user();
+        return view('admin.pages.cabang.create', compact('user'));
     }
 
     /**

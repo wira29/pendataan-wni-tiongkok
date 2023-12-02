@@ -62,7 +62,6 @@ class InformationController extends Controller
      */
     public function edit(Information $informasi)
     {
-
         $user = auth()->user();
         return view('admin.pages.informasi.edit', compact('informasi', 'user'));
 
