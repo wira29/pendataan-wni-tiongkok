@@ -110,13 +110,14 @@
                     </a>
 
                     <ul class="submenu active">
-
-                    @if(Auth::check() && Auth::user()->is_admin)
-                        <li class="submenu-item {{ request()->routeIs('admin.informasi.create') ? 'active' : '' }}">
-                            <a href="{{ route('admin.informasi.create') }}" class="submenu-link">Tambah Informasi</a>
-
-                        </li>
-                    @endif
+  
+                    @auth
+                        @if(auth()->user()->roles->pluck('name')->contains('admin'))
+                            <li class="submenu-item {{ request()->routeIs('admin.informasi.create') ? 'active' : '' }}">
+                                <a href="{{ route('admin.informasi.create') }}" class="submenu-link">Tambah Informasi</a>
+                            </li>
+                        @endif
+                    @endauth
 
                         <li class="submenu-item {{ request()->routeIs('admin.informasi.index') ? 'active' : '' }}">
                             <a href="{{ route('admin.informasi.index') }}" class="submenu-link">List Informasi</a>
