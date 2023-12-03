@@ -24,13 +24,21 @@
                             <p class="card-text">
                                 {{ substr($paspor->deskripsi, 0, 50) }}...
                             </p>
+                            <p class="card-text">
+                               Batas Tanggal ( {{ $paspor->batas_tanggal }} )
+                            </p>
                         @auth
                             @if(auth()->user()->roles->pluck('name')->contains('admin'))                            
                             <a href="{{ route('admin.pembaruan-paspor.edit', $paspor->id) }}" class="card-link">Edit</a>
                             <a href="#" class="card-link btn-delete-data"
                                data-route="{{ route('admin.pembaruan-paspor.destroy', $paspor->id) }}">Hapus</a>
                                @elseif(auth()->user()->roles->pluck('name')->contains('user'))
-                            <a href="{{ route('admin.pembaruan-paspor.show', $paspor->id) }}" class="card-link">Tampilkan</a>
+                               <!-- jika data sudah terisi jangan tampilkan perbarui -->
+                                 @if($submitPembaruanPaspor->contains('pembaruan_paspors_id', $paspor->id))
+                                <p>Sudah Terisi</p>
+                                 @elseif($submitPembaruanPaspor->contains('pembaruan_paspors_id', $paspor->id))
+                                    <a href="{{ route('admin.pembaruan-paspor.show', $paspor->id) }}" class="card-link">Perbarui</a>
+                                    @endif
                             @endif
                         @endauth
 

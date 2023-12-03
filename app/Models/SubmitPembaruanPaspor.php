@@ -13,7 +13,7 @@ class SubmitPembaruanPaspor extends Model
 
     protected $fillable = [
         'id',
-        'pembaruan_passpor_id',
+        'pembaruan_paspors_id',
         'user_id',
         'file',
         'created_at',

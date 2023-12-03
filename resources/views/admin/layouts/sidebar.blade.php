@@ -101,29 +101,43 @@
 
 
                 <li class="sidebar-title">Menu</li>
-
-                <li
-                    class="sidebar-item has-sub {{ request()->routeIs('admin.informasi.*') ? 'active' : '' }}">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-stack"></i>
-                        <span>Informasi</span>
-                    </a>
-
-                    <ul class="submenu active">
+               
   
                     @auth
                         @if(auth()->user()->roles->pluck('name')->contains('admin'))
+
+                            <li
+                                class="sidebar-item has-sub {{ request()->routeIs('admin.informasi.*') ? 'active' : '' }}">
+                                <a href="#" class='sidebar-link'>
+                                    <i class="bi bi-stack"></i>
+                                    <span>Informasi</span>
+                                </a>
+
+                                <ul class="submenu active">
                             <li class="submenu-item {{ request()->routeIs('admin.informasi.create') ? 'active' : '' }}">
                                 <a href="{{ route('admin.informasi.create') }}" class="submenu-link">Tambah Informasi</a>
                             </li>
-                        @endif
+                                    <li class="submenu-item {{ request()->routeIs('admin.informasi.index') ? 'active' : '' }}">
+                                    <a href="{{ route('admin.informasi.index') }}" class="submenu-link">List Informasi</a>
+                                </li>
+                            </ul>
+                        @elseif(auth()->user()->roles->pluck('name')->contains('user'))
+                            <li
+                                class="sidebar-item  {{ request()->routeIs('admin.informasi.*') ? 'active' : '' }}">
+                                <a href="{{ route('admin.informasi.index') }}" class='sidebar-link'>
+                                    <i class="bi bi-stack"></i>
+                                    <span>Informasi</span>
+                                </a>
+                            </li>
+                            @endif
                     @endauth
 
-                        <li class="submenu-item {{ request()->routeIs('admin.informasi.index') ? 'active' : '' }}">
-                            <a href="{{ route('admin.informasi.index') }}" class="submenu-link">List Informasi</a>
-                        </li>
-                    </ul>
-                </li>
+                    </li>
+
+                       
+                    
+                @auth
+                    @if(auth()->user()->roles->pluck('name')->contains('admin'))
 
                 <li
                     class="sidebar-item has-sub {{ request()->routeIs('admin.pendataan.*') ? 'active' : '' }}">
@@ -144,10 +158,20 @@
 
                         </li>
                     </ul>
-
-
                 </li>
+                @elseif(auth()->user()->roles->pluck('name')->contains('user'))
+                <li
+                    class="sidebar-item  {{ request()->routeIs('admin.pendataan.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.pendataan.index') }}" class='sidebar-link'>
+                        <i class="bi bi-stack"></i>
+                        <span>Pendataan Tahunan</span>
+                    </a>
+                </li>
+                @endif
+                @endauth
 
+                @auth
+                    @if(auth()->user()->roles->pluck('name')->contains('admin'))
                 <li
                     class="sidebar-item has-sub">
                     <a href="#" class='sidebar-link'>
@@ -167,9 +191,18 @@
 
                         </li>
                     </ul>
-
-
                 </li>
+
+                @elseif(auth()->user()->roles->pluck('name')->contains('user'))
+                <li
+                    class="sidebar-item  ">
+                    <a href="{{route('admin.pembaruan-paspor.index')}}" class='sidebar-link'>
+                        <i class="bi bi-stack"></i>
+                        <span>Pembaruan Paspor</span>
+                    </a>
+                </li>
+                @endif
+                @endauth
 
                 <li class="sidebar-title">Pengaturan</li>
 

@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\pendataan\StoreRequest;
 use App\Models\Pendataan;
+use App\Models\SubmitPendataan;
+use App\Http\Controllers\SubmitPendataanController as SubmitPendataans;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+
 
 class PendataanTahunanController extends Controller
 {
@@ -15,10 +19,14 @@ class PendataanTahunanController extends Controller
     public function index()
     {
         $user = auth()->user();
+
+        $submitPendataan = SubmitPendataan::query()->where('user_id', $user->id)->get();
         $data = [
             'pendataans' => Pendataan::orderBy('created_at', 'desc')->paginate(),
             'user' => $user,
+            'submitPendataan' => $submitPendataan,
         ];
+
         return view('admin.pages.pendataan-tahunan.index', $data);
     }
 
@@ -56,6 +64,7 @@ class PendataanTahunanController extends Controller
         $pendataan = Pendataan::query()->findOrFail($id);
         return view('admin.pages.pendataan-tahunan.pendataan', compact('pendataan','user'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -105,4 +114,6 @@ class PendataanTahunanController extends Controller
             return redirect()->route('admin.pendataan.index')->with('error', 'Data gagal dihapus');
         }
     }
+
+    
 }

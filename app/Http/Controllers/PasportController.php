@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PembaruanPaspor;
+use App\Models\SubmitPembaruanPaspor;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\paspor\StoreRequest;
 use App\Http\Requests\paspor\UpdateRequest;
@@ -14,9 +15,11 @@ class PasportController extends Controller
     public function index()
     {
         $user = auth()->user();
+        $submitPembaruanPaspor = SubmitPembaruanPaspor::query()->where('user_id', $user->id)->get();
         $data = [
             'paspors' => PembaruanPaspor::query()->orderBy('created_at', 'desc')->paginate(8),
             'user' => $user,
+            'submitPembaruanPaspor' => $submitPembaruanPaspor,
         ];
         return view('admin.pages.pembaruan-pasport.index', $data);
     }
@@ -45,7 +48,7 @@ class PasportController extends Controller
     {
         $user = auth()->user();
         $pembaruanPaspor = PembaruanPaspor::query()->findOrFail($id);
-        return view('admin.pages.pembaruan-pasport.pembaruan-pasport', compact('pembaruanPaspor','user'));
+        return view('admin.pages.pembaruan-pasport.pembaruan', compact('pembaruanPaspor','user'));
     }
 
     public function edit(PembaruanPaspor $pembaruanPaspor)

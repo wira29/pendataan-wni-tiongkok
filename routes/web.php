@@ -3,6 +3,8 @@
 use App\Http\Controllers\CabangController;
 use App\Http\Controllers\InformationController;
 use App\Http\Controllers\PendataanTahunanController;
+use App\Http\Controllers\SubmitPendataanController;
+use App\Http\Controllers\SubmitPembaruanController;
 use App\Http\Controllers\RantingController;
 use App\Http\Controllers\MyProfileController;
 use App\Http\Controllers\PasportController;
@@ -33,8 +35,11 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function() {
         'ranting' => RantingController::class,
         'pendataan' => PendataanTahunanController::class,
         'profile' => MyProfileController::class,
+        'submit-pendataan' => SubmitPendataanController::class,
         'informasi' => InformationController::class,
         'pembaruan-paspor' => PasportController::class,
+        'submit-pembaruan-paspor' => SubmitPembaruanController::class,
+
         ]);
 });
 
