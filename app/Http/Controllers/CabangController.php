@@ -75,8 +75,16 @@ class CabangController extends Controller
      */
     public function destroy(Cabang $cabang)
     {
-        $cabang->delete();
+        try{
+            $cabang = Cabang::query()->findOrFail($cabang->id);
+            $cabang->delete();
+            return to_route('admin.cabang.index')->with('success', 'Cabang berhasil dihapus');
 
-        return to_route('admin.cabang.index')->with('success', 'Cabang berhasil dihapus');
+        }catch (\Exception $exception){
+            if($exception->getCode() == 23000){
+                return redirect()->route('admin.cabang.index')->with('error', 'Data gagal dihapus, data digunakan pada relasi lain');
+            }
+            return redirect()->route('admin.cabang.index')->with('error', 'Data gagal dihapus');
+        }        
     }
 }

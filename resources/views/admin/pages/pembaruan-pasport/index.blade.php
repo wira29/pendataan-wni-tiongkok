@@ -29,6 +29,7 @@
                             </p>
                         @auth
                             @if(auth()->user()->roles->pluck('name')->contains('admin'))
+                            <a href="{{ route('admin.pembaruan-paspor.detailAdmin', $paspor->id) }}" class="card-link">Detail</a>
                             <a href="{{ route('admin.pembaruan-paspor.edit', $paspor->id) }}" class="card-link">Edit</a>
                             <a href="#" class="card-link btn-delete-data"
                                data-route="{{ route('admin.pembaruan-paspor.destroy', $paspor->id) }}">Hapus</a>

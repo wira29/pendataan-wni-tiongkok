@@ -82,8 +82,16 @@ class RantingController extends Controller
      */
     public function destroy(Ranting $ranting)
     {
-        $ranting->delete();
+        try{
+            $ranting = ranting::query()->findOrFail($ranting->id);
+            $ranting->delete();
+            return to_route('admin.ranting.index')->with('success', 'Ranting berhasil dihapus');
 
-        return redirect()->back()->with('success', 'Data berhasil dihapus');
+        }catch (\Exception $exception){
+            if($exception->getCode() == 23000){
+                return redirect()->route('admin.ranting.index')->with('error', 'Data gagal dihapus, data digunakan pada relasi lain');
+            }
+            return redirect()->route('admin.ranting.index')->with('error', 'Data gagal dihapus');
+        }        
     }
 }

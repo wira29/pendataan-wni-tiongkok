@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\paspor\StoreRequest;
 use App\Http\Requests\paspor\UpdateRequest;
 
+
 use Illuminate\Http\Request;
 
 class PasportController extends Controller
@@ -51,6 +52,17 @@ class PasportController extends Controller
         return view('admin.pages.pembaruan-pasport.pembaruan', compact('pembaruanPaspor','user'));
     }
 
+    public function detailAdmin(string $id)
+    {
+
+        $user = auth()->user();
+        $pasport = PembaruanPaspor::query()
+                    ->with('submitpasports.pengguna.ranting.cabang')
+                    ->where('id', $id)
+                    ->first();
+        return view('admin.pages.pembaruan-pasport.detail-passport', compact('pasport', 'user'));
+    }
+
     public function edit(PembaruanPaspor $pembaruanPaspor)
     {
         $user = auth()->user();
@@ -69,6 +81,22 @@ class PasportController extends Controller
         $pembaruanPaspor->update($data);
 
         return redirect()->route('admin.pembaruan-paspor.index')->with('success', 'Data berhasil diubah');
+    }
+
+    public function destroy(PembaruanPaspor $pembaruanPaspor)
+    {
+        try{
+            $foto = $pembaruanPaspor->foto;
+            $pembaruanPaspor->delete();
+            if($delete = Storage::exists($pembaruanPaspor->foto)){
+                return redirect()->route('admin.pembaruan-paspor.index')->with('success', 'Data berhasil dihapus');
+            }
+        }catch(\Exception $e){
+            if($e->getCode() == 23000){
+                return redirect()->route('admin.pembaruan-paspor.index')->with('error', 'Data gagal dihapus, data digunakan pada relasi lain');
+            }
+            return redirect()->route('admin.pembaruan-paspor.index')->with('error', 'Data gagal dihapus');
+        }
     }
 
 

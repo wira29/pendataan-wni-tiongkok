@@ -33,6 +33,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function() {
     Route::get('pendataan/detail-admin/{pendataanId}', [PendataanTahunanController::class, 'detailAdmin'])->name('pendataan.detailAdmin');
     Route::get('submit-pendataan/{user}/{id}', [SubmitPendataanController::class, 'detailAdmin'])->name('submit-pendataan.detailAdmin');
+    
+
+    Route::get('pembaruan-paspor/detail-admin/{pembaruanPasporId}', [PasportController::class, 'detailAdmin'])->name('pembaruan-paspor.detailAdmin');
+    Route::get('submit-pembaruan-paspor/{user}/{id}', [SubmitPembaruanController::class, 'detailAdmin'])->name('submit-pembaruan-paspor.detailAdmin');
+    Route::get('/download-file/{id}', [SubmitPembaruanController::class, 'downloadFile'])->name('download-file');
     Route::resources([
         'cabang' => CabangController::class,
         'ranting' => RantingController::class,
