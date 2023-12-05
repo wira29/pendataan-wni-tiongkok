@@ -22,14 +22,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.pages.blank.index');
+Route::middleware(['auth'])->group(function() {
+    Route::get('/', function () {
+        $user = auth()->user();
+        return view('admin.pages.blank.index', compact('user'));
+    });
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function() {
+    Route::get('pendataan/detail-admin/{pendataanId}', [PendataanTahunanController::class, 'detailAdmin'])->name('pendataan.detailAdmin');
+    Route::get('submit-pendataan/{user}/{id}', [SubmitPendataanController::class, 'detailAdmin'])->name('submit-pendataan.detailAdmin');
     Route::resources([
         'cabang' => CabangController::class,
         'ranting' => RantingController::class,
@@ -39,7 +44,6 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function() {
         'informasi' => InformationController::class,
         'pembaruan-paspor' => PasportController::class,
         'submit-pembaruan-paspor' => SubmitPembaruanController::class,
-
         ]);
 });
 

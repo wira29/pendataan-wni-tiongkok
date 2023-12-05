@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('tempat_lahir', 100);
             $table->date('tanggal_lahir');
             $table->string('keperluan');
-            $table->string('no_hp_tiogkok', 20);
+            $table->string('no_hp_tiongkok', 20);
             $table->string('no_paspor', 20);
             $table->date('masa_berlaku_paspor');
             $table->string('no_visa', 20);

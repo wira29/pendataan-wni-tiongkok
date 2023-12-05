@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="{{ asset('assets/extensions/choices.js/public/assets/styles/choices.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/extensions/flatpickr/flatpickr.min.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('assets/extensions/simple-datatables/style.css') }}">
+    <link rel="stylesheet" crossorigin href="{{ asset('assets/compiled/css/table-datatable.css') }}">
+
 
     @stack('custome-css')
 </head>
@@ -63,6 +66,9 @@
 
 <script src="{{ asset('assets/extensions/flatpickr/flatpickr.min.js') }}"></script>
 <script src="{{ asset('assets/static/js/pages/date-picker.js') }}"></script>
+
+<script src="{{ asset('assets/extensions/simple-datatables/umd/simple-datatables.js') }}"></script>
+<script src="{{ asset('assets/static/js/pages/simple-datatables.js') }}"></script>
 
 @stack('custome-script')
 

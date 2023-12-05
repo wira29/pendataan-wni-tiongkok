@@ -101,8 +101,8 @@
 
 
                 <li class="sidebar-title">Menu</li>
-               
-  
+
+
                     @auth
                         @if(auth()->user()->roles->pluck('name')->contains('admin'))
 
@@ -134,8 +134,8 @@
 
                     </li>
 
-                       
-                    
+
+
                 @auth
                     @if(auth()->user()->roles->pluck('name')->contains('admin'))
 
@@ -215,17 +215,6 @@
 
 
                 </li>
-
-                <li
-                    class="sidebar-item  ">
-                    <a href="#" class='sidebar-link' onclick="confirmLogout()">
-                        <i class="bi bi-puzzle"></i>
-                        <span>Keluar</span>
-                    </a>
-                </li>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
 
             </ul>
         </div>

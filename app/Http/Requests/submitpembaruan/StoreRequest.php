@@ -22,7 +22,7 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'file' => 'required|file|mimes:rar|max:2048',
+            'file' => 'required|file|mimes:rar,zip|max:2048',
         ];
     }
 

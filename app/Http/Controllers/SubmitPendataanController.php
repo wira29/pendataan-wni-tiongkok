@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\SubmitPendataan;
 use App\Models\Pendataan;
@@ -15,12 +16,12 @@ class SubmitPendataanController extends Controller
      */
     public function index()
     {
-       
+
     }
 
     public function storePendataan(SubmitPendataanStoreRequest $request)
     {
-        
+
     }
 
     /**
@@ -28,7 +29,7 @@ class SubmitPendataanController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -53,6 +54,14 @@ class SubmitPendataanController extends Controller
     public function show(string $id)
     {
         $user = auth()->user();
+        $EvPendataan = Pendataan::query()->where('id', $id)->first();
+        $pendataan = SubmitPendataan::query()->where('pendataan_id', $id)->where('user_id', $user->id)->first();
+
+        return view('admin.pages.pendataan-tahunan.detail', compact('pendataan', 'EvPendataan', 'user'));
+    }
+
+    public function detailAdmin(User $user, string $id)
+    {
         $EvPendataan = Pendataan::query()->where('id', $id)->first();
         $pendataan = SubmitPendataan::query()->where('pendataan_id', $id)->where('user_id', $user->id)->first();
 

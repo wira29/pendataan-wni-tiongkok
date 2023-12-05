@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class SubmitPendataan extends Model
 {
@@ -29,4 +30,9 @@ class SubmitPendataan extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function pengguna(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

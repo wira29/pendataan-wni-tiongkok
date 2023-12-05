@@ -35,7 +35,7 @@ class PendataanTahunanController extends Controller
      */
     public function create()
     {
-        $user = auth()->user(); 
+        $user = auth()->user();
         return view('admin.pages.pendataan-tahunan.create',compact('user'));
     }
 
@@ -65,12 +65,24 @@ class PendataanTahunanController extends Controller
         return view('admin.pages.pendataan-tahunan.pendataan', compact('pendataan','user'));
     }
 
+    public function detailAdmin(string $id)
+    {
+
+        $user = auth()->user();
+        $pendataan = Pendataan::query()
+                    ->with('submitPendataans.pengguna.ranting.cabang')
+                    ->where('id', $id)
+                    ->first();
+//        dd($pendataan);
+        return view('admin.pages.pendataan-tahunan.detail-admin', compact('pendataan', 'user'));
+    }
+
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    { 
+    {
         $pendataan = Pendataan::query()->findOrFail($id);
         $user = auth()->user();
         return view('admin.pages.pendataan-tahunan.edit', compact('id', 'user', 'pendataan'));
@@ -115,5 +127,5 @@ class PendataanTahunanController extends Controller
         }
     }
 
-    
+
 }
