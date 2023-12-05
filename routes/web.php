@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CabangController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InformationController;
 use App\Http\Controllers\PendataanTahunanController;
 use App\Http\Controllers\SubmitPendataanController;
@@ -23,10 +24,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['auth'])->group(function() {
-    Route::get('/', function () {
-        $user = auth()->user();
-        return view('admin.pages.blank.index', compact('user'));
-    });
+    Route::get('/', [HomeController::class, 'index'])->name('home');
 });
 
 Auth::routes();
