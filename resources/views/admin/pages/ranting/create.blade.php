@@ -5,8 +5,8 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Halaman Tambah Cabang</h3>
-                    <p class="text-subtitle text-muted">Isi form dibawah ini untuk menambah cabang</p>
+                    <h3>Halaman Tambah Ranting</h3>
+                    <p class="text-subtitle text-muted">Isi form dibawah ini untuk menambah ranting</p>
                 </div>
             </div>
             <div class="row">
@@ -34,7 +34,7 @@
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label for="first-name-vertical">Nama</label>
-                                                    <input type="text" id="first-name-vertical" class="form-control" name="nama" placeholder="nama cabang..">
+                                                    <input type="text" id="first-name-vertical" class="form-control" name="nama" placeholder="Nama ranting..">
                                                 </div>
                                             </div>
                                             <div class="col-12">

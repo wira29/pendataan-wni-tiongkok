@@ -5,8 +5,8 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Halaman Pembaruan Passport</h3>
-                    <p class="text-subtitle text-muted">Isi form dibawah ini untuk menambah informasi terbaru</p>
+                    <h3>Halaman Pembaruan Paspor</h3>
+                    <p class="text-subtitle text-muted">Isi form dibawah ini untuk menambah Pembaruan Paspor terbaru</p>
                 </div>
             </div>
             <div class="row">

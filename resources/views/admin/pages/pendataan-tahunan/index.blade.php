@@ -6,7 +6,13 @@
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
                     <h3>Halaman Pendataan Tahunan Belum Diisi</h3>
+                    @auth 
+                        @if(auth()->user()->roles->pluck('name')->contains('admin'))
+                    <p class="text-subtitle text-muted">List pendataan tahunan </p>
+                        @elseif(auth()->user()->roles->pluck('name')->contains('user'))
                     <p class="text-subtitle text-muted">List pendataan tahunan yang Belum Diisi</p>
+                        @endif
+                    @endauth
                 </div>
             </div>
         </div>

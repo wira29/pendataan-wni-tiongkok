@@ -5,8 +5,8 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Halaman Edit Cabang</h3>
-                    <p class="text-subtitle text-muted">Isi form dibawah ini untuk mengedit cabang</p>
+                    <h3>Halaman Edit Ranting</h3>
+                    <p class="text-subtitle text-muted">Isi form dibawah ini untuk mengedit Ranting</p>
                 </div>
             </div>
             <div class="row">

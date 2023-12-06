@@ -24,12 +24,15 @@
                             <p class="card-text">
                                 {{ substr($information->deskripsi, 0, 50) }}...
                             </p>
-                            <a href="{{ route('admin.informasi.show', $information->id) }}" class="card-link">Tampilkan</a>
-                            @if(Auth::check() && Auth::user()->is_admin)
+                            @auth
+                            @if(auth()->user()->roles->pluck('name')->contains('admin'))
                             <a href="{{ route('admin.informasi.edit', $information->id) }}" class="card-link">Edit</a>
                             <a href="#" class="card-link btn-delete-data"
                                data-route="{{ route('admin.informasi.destroy', $information->id) }}">Hapus</a>
+                               @elseif(auth()->user()->roles->pluck('name')->contains('user'))
+                            <a href="{{ route('admin.informasi.show', $information->id) }}" class="card-link">Tampilkan</a>
                             @endif
+                            @endauth
                         </div>
                     </div>
                 </div>

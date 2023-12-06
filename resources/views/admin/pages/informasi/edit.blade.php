@@ -44,6 +44,11 @@
                                                     <textarea class="form-control" name="deskripsi" id="alamat" cols="5" rows="5" placeholder="deskripsi...">{{ $informasi->deskripsi }}</textarea>
                                                 </div>
                                             </div>
+                                            <div class="form-group">
+                                                    <label for="current-image">Current Image</label>
+                                                    <img src="{{ asset('storage/' . $informasi->gambar) }}" alt="Current Image" width="100">
+                                                </div>
+                                            </div>
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label for="first-name-vertical">Gambar</label>

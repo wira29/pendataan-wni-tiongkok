@@ -27,7 +27,7 @@ class User extends Authenticatable
         'nik',
         'no_hp',
         'alamat_indonesia',
-        'alamat_tingkok',
+        'alamat_tiongkok',
         'gender',
         'foto'
     ];

@@ -61,8 +61,9 @@ class RantingController extends Controller
      */
     public function edit(Ranting $ranting)
     {
+        $user = auth()->user();
         $cabangs = Cabang::all();
-        return view('admin.pages.ranting.edit', compact('ranting', 'cabangs'));
+        return view('admin.pages.ranting.edit', compact('ranting', 'cabangs', 'user'));
     }
 
     /**

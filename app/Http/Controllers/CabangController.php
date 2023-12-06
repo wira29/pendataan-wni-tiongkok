@@ -55,7 +55,8 @@ class CabangController extends Controller
      */
     public function edit(Cabang $cabang)
     {
-        return view('admin.pages.cabang.edit', compact('cabang'));
+        $user = auth()->user();
+        return view('admin.pages.cabang.edit', compact('cabang', 'user'));
     }
 
     /**
