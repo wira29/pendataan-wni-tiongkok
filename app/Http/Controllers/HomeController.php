@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\PembaruanPaspor;
+use App\Models\SubmitPembaruanPaspor;
 use App\Models\Pendataan;
+use App\Models\SubmitPendataan;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -29,20 +31,20 @@ class HomeController extends Controller
 
         if (auth()->user()->roles->pluck('name')->contains('user'))
         {
+                    
+            $pendataanSudahDiisi = SubmitPendataan::where('user_id', $user->id)->pluck('pendataan_id')->toArray();
+                    
             $pendataans = Pendataan::query()
-                        ->leftJoin('submit_pendataans', function ($q) use($user) {
-                            return $q->where('user_id', $user->id);
-                        })
-                        ->where('submit_pendataans.id', null)
-                        ->whereDate('batas_tanggal', '>=', now())
+                        ->whereDate('batas_tanggal', '>=', now()) 
+                        ->whereNotIn('id', $pendataanSudahDiisi)
                         ->count();
 
+                    
+            $pembaruanPasporSudahDiisi = SubmitPembaruanPaspor::where('user_id', $user->id)->pluck('pembaruan_paspors_id')->toArray();
+                    
             $pembaruanPaspor = PembaruanPaspor::query()
-                        ->leftJoin('submit_pembaruan_paspors', function ($q) use($user) {
-                            return $q->where('user_id', $user->id);
-                        })
-                        ->where('submit_pembaruan_paspors.id', null)
                         ->whereDate('batas_tanggal', '>=', now())
+                        ->whereNotIn('id', $pembaruanPasporSudahDiisi)
                         ->count();
 
             return view('admin.pages.beranda.index',compact('user', 'pendataans', 'pembaruanPaspor'));
