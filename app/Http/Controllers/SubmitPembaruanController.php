@@ -40,7 +40,7 @@ class SubmitPembaruanController extends Controller
         // berdasarkan id user
         $data['user_id'] = auth()->user()->id;
         $data ['pembaruan_paspors_id'] = $request->pembaruan_paspors_id;
-        
+
         if($request->hasFile('file')) {
             $data['file'] = $request->file('file')->store('pembaruan');
         }
@@ -49,7 +49,7 @@ class SubmitPembaruanController extends Controller
 
         return redirect()->route('admin.pembaruan-paspor.index')->with('success', 'Data berhasil ditambahkan');
     }
-   
+
 
     /**
      * Display the specified resource.
@@ -75,27 +75,29 @@ class SubmitPembaruanController extends Controller
     {
         $pembaruan = SubmitPembaruanPaspor::find($id);
 
-if ($pembaruan) {
-    // $filename = str_replace('/', '\\', $pembaruan->file);
-    $filename = basename($pembaruan->file);
+        if ($pembaruan) {
+            // $filename = str_replace('/', '\\', $pembaruan->file);
+//            $filename = basename($pembaruan->file);
 
-    // Gunakan fungsi Storage untuk mendapatkan path file di direktori storage/app/public
-    $pathToFile = storage_path('app\\public\\' . $filename);
+            // Gunakan fungsi Storage untuk mendapatkan path file di direktori storage/app/public
+//            $pathToFile = storage_path('app\\public\\' . $filename);
 
-    // Ganti string 'public/' dengan 'public\'
-    $pathToFile = str_replace('public/', 'public\\', $pathToFile);
+            // Ganti string 'public/' dengan 'public\'
+//            $pathToFile = str_replace('public/', 'public\\', $pathToFile);
 
-    // dd($pathToFile);
+            // dd($pathToFile);
 
-    // Pastikan file ada sebelum mencoba untuk mengunduhnya
-    if (file_exists($pathToFile)) {
-        return response()->download($pathToFile, $filename);
-    } else {
-        return redirect()->back()->with('error', 'File not found.');
-    }
-} else {
-    return redirect()->back()->with('error', 'Record not found.');
-}
+            // Pastikan file ada sebelum mencoba untuk mengunduhnya
+            if (Storage::exists($pembaruan->file)) {
+//                response()->download(asset('storage/' . $pembaruan->file), "test");
+                return Storage::download($pembaruan->file);
+//                return redirect()->back()->with('success', 'Berhasil.');
+            } else {
+                return redirect()->back()->with('error', 'File not found.');
+            }
+        } else {
+            return redirect()->back()->with('error', 'Record not found.');
+        }
 
     }
 
@@ -133,7 +135,7 @@ if ($pembaruan) {
 
     }
 
-    
+
 
     /**
      * Remove the specified resource from storage.

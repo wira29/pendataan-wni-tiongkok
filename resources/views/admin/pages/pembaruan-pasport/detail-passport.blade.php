@@ -33,7 +33,7 @@
                                     <td>{{ $data->pengguna->nama }}</td>
                                     <td>{{ $data->file }}</td>
                                     <td>
-                                        <a href="{{ route('admin.submit-pembaruan-paspor.detailAdmin', ['user' => $data->pengguna->id, 'id' => $pasport->id]) }}" class="btn btn-primary btn-sm">Detail</a>
+                                        <a href="{{ route('admin.download-file', $data->id) }}" class="btn btn-primary btn-sm">Download</a>
                                     </td>
                                 </tr>
                             @endforeach
