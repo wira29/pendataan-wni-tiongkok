@@ -97,7 +97,7 @@ class RegisterController extends Controller
             'alamat_tiongkok' => $data['alamat_tiongkok'],
         ]);
 
-        $user->assignRole('user');
+        $user->assignRole('manajer');
 
         return $user;
     }

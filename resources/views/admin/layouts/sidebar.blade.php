@@ -3,8 +3,7 @@
         <div class="sidebar-header position-relative">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="logo">
-                    <!-- <a href="index.html"><img src="{{ asset('assets/compiled/svg/logo.svg') }}" alt="Logo" srcset=""></a> -->
-                    <h5 alt="logo" class="fw-bold">Pendataan WNI Tiongkok</h5>
+                    <h5 alt="logo" class="fw-bold">TransRide</h5>
                 </div>
                 <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
@@ -48,169 +47,83 @@
                         <i class="bi bi-grid-fill"></i>
                         <span>Beranda</span>
                     </a>
-
-
                 </li>
-
 
                 @if(auth()->user()->hasRole('admin'))
-                <li class="sidebar-title">Master Data</li>
+                <li class="sidebar-title">Sumber Daya</li>
                 <li
-                    class="sidebar-item has-sub {{ request()->routeIs('admin.cabang.*') ? 'active' : '' }}">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-stack"></i>
-                        <span>Cabang</span>
-                    </a>
-
-                    <ul class="submenu active">
-
-                        <li class="submenu-item {{ request()->routeIs('admin.cabang.create') ? 'active' : '' }}">
-                            <a href="{{ route('admin.cabang.create') }}" class="submenu-link">Tambah Cabang</a>
-
-                        </li>
-                        <li class="submenu-item {{ request()->routeIs('admin.cabang.index') ? 'active' : '' }}">
-                            <a href="{{ route('admin.cabang.index') }}" class="submenu-link">List Cabang</a>
-
-                        </li>
-
-                    </ul>
-
-
-                </li>
-
-                <li
-                    class="sidebar-item has-sub {{ request()->routeIs('admin.ranting.*') ? 'active' : '' }}">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-stack"></i>
-                        <span>Ranting</span>
-                    </a>
-
-                    <ul class="submenu active">
-
-                        <li class="submenu-item {{ request()->routeIs('admin.ranting.create') ? 'active' : '' }}">
-                            <a href="{{ route('admin.ranting.create') }}" class="submenu-link">Tambah Ranting</a>
-
-                        </li>
-                        <li class="submenu-item {{ request()->routeIs('admin.ranting.index') ? 'active' : '' }}">
-                            <a href="{{ route('admin.ranting.index') }}" class="submenu-link">List Ranting</a>
-
-                        </li>
-
-                    </ul>
-                </li>
-                @endif
-
-
-                <li class="sidebar-title">Menu</li>
-
-
-                    @auth
-                        @if(auth()->user()->roles->pluck('name')->contains('admin'))
-
-                            <li
-                                class="sidebar-item has-sub {{ request()->routeIs('admin.informasi.*') ? 'active' : '' }}">
+                        class="sidebar-item has-sub {{ request()->routeIs('admin.mobil.*') ? 'active' : '' }}">
                                 <a href="#" class='sidebar-link'>
-                                    <i class="bi bi-stack"></i>
-                                    <span>Informasi</span>
+                                <i class="bi bi-car-front-fill"></i>
+                                    <span>Mobil</span>
                                 </a>
 
                                 <ul class="submenu active">
-                            <li class="submenu-item {{ request()->routeIs('admin.informasi.create') ? 'active' : '' }}">
-                                <a href="{{ route('admin.informasi.create') }}" class="submenu-link">Tambah Informasi</a>
+                            <li class="submenu-item {{ request()->routeIs('admin.mobil.create') ? 'active' : '' }}">
+                                <a href="{{ route('admin.mobil.create') }}" class="submenu-link">Tambah Mobil</a>
                             </li>
-                                    <li class="submenu-item {{ request()->routeIs('admin.informasi.index') ? 'active' : '' }}">
-                                    <a href="{{ route('admin.informasi.index') }}" class="submenu-link">List Informasi</a>
+                                    <li class="submenu-item {{ request()->routeIs('admin.mobil.index') ? 'active' : '' }}">
+                                    <a href="{{ route('admin.mobil.index') }}" class="submenu-link">List Mobil</a>
                                 </li>
                             </ul>
-                        @elseif(auth()->user()->roles->pluck('name')->contains('user'))
-                            <li
-                                class="sidebar-item  {{ request()->routeIs('admin.informasi.*') ? 'active' : '' }}">
-                                <a href="{{ route('admin.informasi.index') }}" class='sidebar-link'>
-                                    <i class="bi bi-stack"></i>
-                                    <span>Informasi</span>
+                </li>
+                <li class="sidebar-item has-sub {{ request()->routeIs('admin.sopir.*') ? 'active' : '' }}">
+                                <a href="#" class='sidebar-link'>
+                                <i class="bi bi-person-lines-fill"></i>
+                                    <span>Driver</span>
                                 </a>
+
+                                <ul class="submenu active">
+                            <li class="submenu-item {{ request()->routeIs('admin.sopir.create') ? 'active' : '' }}">
+                                <a href="{{ route('admin.sopir.create') }}" class="submenu-link">Tambah Driver</a>
                             </li>
-                            @endif
+                                    <li class="submenu-item {{ request()->routeIs('admin.sopir.index') ? 'active' : '' }}">
+                                    <a href="{{ route('admin.sopir.index') }}" class="submenu-link">List Driver</a>
+                                </li>
+                            </ul>
+                </li>
+
+                @elseif(auth()->user()->hasRole('manajer'))
+                <li class="sidebar-title">Menu</li>
+                <li
+                        class="sidebar-item {{ request()->routeIs('admin.persetujuan.index') ? 'active' : '' }}">
+                                <a href="{{ route('admin.persetujuan.index') }}" class='sidebar-link'>
+                                <i class="bi bi-envelope-paper-fill"></i>
+                                    <span>Persetujuan</span>
+                                </a>
+                </li>
+                @endif
+
+                    @auth
+                        @if(auth()->user()->roles->pluck('name')->contains('admin'))
+                        <li class="sidebar-title">Menu</li>
+
+                            <liindex
+                                class="sidebar-item has-sub {{ request()->routeIs('admin.transaksi.*') ? 'active' : '' }}">
+                                <a href="#" class='sidebar-link'>
+                                <i class="bi bi-bucket-fill"></i>
+                                    <span>Transaksi</span>
+                                </a>
+
+                                <ul class="submenu active">
+                            <li class="submenu-item {{ request()->routeIs('admin.transaksi.create') ? 'active' : '' }}">
+                                <a href="{{ route('admin.transaksi.create') }}" class="submenu-link">Tambah Transaksi</a>
+                            </li>
+                                    <li class="submenu-item {{ request()->routeIs('admin.transaksi.index') ? 'active' : '' }}">
+                                    <a href="{{ route('admin.transaksi.index') }}" class="submenu-link">List Transaksi</a>
+                                </li>
+                            </ul>
+                        @endif
                     @endauth
 
-                    </li>
-
-
-
-                @auth
-                    @if(auth()->user()->roles->pluck('name')->contains('admin'))
-
-                <li
-                    class="sidebar-item has-sub {{ request()->routeIs('admin.pendataan.*') ? 'active' : '' }}">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-stack"></i>
-                        <span>Pendataan Tahunan</span>
-                    </a>
-
-                    <ul class="submenu active">
-
-                        <li class="submenu-item {{ request()->routeIs('admin.pendataan.create') ? 'active' : '' }}">
-                            <a href="{{ route('admin.pendataan.create') }}" class="submenu-link">Tambah Pendataan Tahunan</a>
-
-                        </li>
-
-                        <li class="submenu-item {{ request()->routeIs('admin.pendataan.index') ? 'active' : '' }}">
-                            <a href="{{ route('admin.pendataan.index') }}" class="submenu-link">List Pendataan Tahunan</a>
-
-                        </li>
-                    </ul>
                 </li>
-                @elseif(auth()->user()->roles->pluck('name')->contains('user'))
-                <li
-                    class="sidebar-item  {{ request()->routeIs('admin.pendataan.*') ? 'active' : '' }}">
-                    <a href="{{ route('admin.pendataan.index') }}" class='sidebar-link'>
-                        <i class="bi bi-stack"></i>
-                        <span>Pendataan Tahunan</span>
-                    </a>
-                </li>
-                @endif
-                @endauth
-
-                @auth
-                    @if(auth()->user()->roles->pluck('name')->contains('admin'))
-                <li
-                    class="sidebar-item has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-stack"></i>
-                        <span>Pembaruan Paspor</span>
-                    </a>
-
-                    <ul class="submenu active">
-
-                        <li class="submenu-item  ">
-                            <a href="{{route('admin.pembaruan-paspor.create')}}" class="submenu-link">Tambah Pembaruan Paspor</a>
-
-                        </li>
-
-                        <li class="submenu-item  ">
-                            <a href="{{route('admin.pembaruan-paspor.index')}}" class="submenu-link">List Pembaruan Paspor</a>
-
-                        </li>
-                    </ul>
-                </li>
-
-                @elseif(auth()->user()->roles->pluck('name')->contains('user'))
-                <li
-                    class="sidebar-item  ">
-                    <a href="{{route('admin.pembaruan-paspor.index')}}" class='sidebar-link'>
-                        <i class="bi bi-stack"></i>
-                        <span>Pembaruan Paspor</span>
-                    </a>
-                </li>
-                @endif
-                @endauth
 
                 <li class="sidebar-title">Pengaturan</li>
 
                 <li
                     class="sidebar-item  ">
                     <a href="{{route('admin.profile.index')}}" class='sidebar-link'>
-                        <i class="bi bi-life-preserver"></i>
+                    <i class="bi bi-person-fill"></i>
                         <span>Akun</span>
                     </a>
 

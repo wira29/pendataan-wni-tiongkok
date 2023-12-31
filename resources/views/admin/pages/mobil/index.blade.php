@@ -5,8 +5,8 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Halaman Informasi</h3>
-                    <p class="text-subtitle text-muted">List informasi</p>
+                    <h3>Halaman Mobil</h3>
+                    <p class="text-subtitle text-muted">List Mobil</p>
                 </div>
             </div>
         </div>
@@ -26,11 +26,11 @@
                             </p>
                             @auth
                             @if(auth()->user()->roles->pluck('name')->contains('admin'))
-                            <a href="{{ route('admin.informasi.edit', $mobil->id) }}" class="card-link">Edit</a>
+                            <a href="{{ route('admin.mobil.edit', $mobil->id) }}" class="card-link">Edit</a>
                             <a href="#" class="card-link btn-delete-data"
-                               data-route="{{ route('admin.informasi.destroy', $mobil->id) }}">Hapus</a>
+                               data-route="{{ route('admin.mobil.destroy', $mobil->id) }}">Hapus</a>
                                @elseif(auth()->user()->roles->pluck('name')->contains('user'))
-                            <a href="{{ route('admin.informasi.show', $mobil->id) }}" class="card-link">Tampilkan</a>
+                            <a href="{{ route('admin.mobil.show', $mobil->id) }}" class="card-link">Tampilkan</a>
                             @endif
                             @endauth
                         </div>

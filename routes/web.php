@@ -9,6 +9,10 @@ use App\Http\Controllers\SubmitPembaruanController;
 use App\Http\Controllers\RantingController;
 use App\Http\Controllers\MyProfileController;
 use App\Http\Controllers\PasportController;
+use App\Http\Controllers\MobilController;
+use App\Http\Controllers\SopirController;
+use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\PersetujuanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +37,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function() {
     Route::get('pendataan/detail-admin/{pendataanId}', [PendataanTahunanController::class, 'detailAdmin'])->name('pendataan.detailAdmin');
     Route::get('submit-pendataan/{user}/{id}', [SubmitPendataanController::class, 'detailAdmin'])->name('submit-pendataan.detailAdmin');
+    Route::get('/get-no-polisi/{mobilId}', [TransaksiController::class, 'getNoPolisi']);
+    Route::post('/setujui-transaksi/{transaksiId}', [PersetujuanController::class, 'setujuiTransaksi']);
+
     
 
     Route::get('pembaruan-paspor/detail-admin/{pembaruanPasporId}', [PasportController::class, 'detailAdmin'])->name('pembaruan-paspor.detailAdmin');
@@ -47,6 +54,10 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function() {
         'informasi' => InformationController::class,
         'pembaruan-paspor' => PasportController::class,
         'submit-pembaruan-paspor' => SubmitPembaruanController::class,
+        'mobil' => MobilController::class,
+        'sopir' => SopirController::class,
+        'transaksi' => TransaksiController::class,
+        'persetujuan' => PersetujuanController::class,
         ]);
 });
 
